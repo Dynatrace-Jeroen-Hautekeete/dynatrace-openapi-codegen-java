@@ -56,7 +56,7 @@ import com.dynatrace.apis.configv1.JSON;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
-public class StringRequestAttributeComparisonInfo extends ComparisonInfo {
+public class StringRequestAttributeComparisonInfo extends ComparisonInfo<String> {
   /**
    * Operator of the comparision. You can reverse it by setting **negate** to &#x60;true&#x60;.
    */
@@ -106,7 +106,7 @@ public class StringRequestAttributeComparisonInfo extends ComparisonInfo {
     }
   }
 
-  public static final String JSON_PROPERTY_COMPARISON = "comparison";
+//  public static final String JSON_PROPERTY_COMPARISON = "comparison";
   private ComparisonEnum comparison;
 
   public static final String JSON_PROPERTY_VALUE = "value";
@@ -144,8 +144,8 @@ public class StringRequestAttributeComparisonInfo extends ComparisonInfo {
   @JsonProperty(JSON_PROPERTY_COMPARISON)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public ComparisonEnum getComparison() {
-    return comparison;
+  public String getComparison() {
+    return comparison.getValue();
   }
 
 

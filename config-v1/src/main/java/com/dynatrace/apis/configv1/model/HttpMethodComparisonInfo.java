@@ -51,7 +51,7 @@ import com.dynatrace.apis.configv1.JSON;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
-public class HttpMethodComparisonInfo extends ComparisonInfo {
+public class HttpMethodComparisonInfo extends ComparisonInfo<com.dynatrace.apis.configv1.model.HttpMethodComparisonInfo.ValueEnum> {
   /**
    * Operator of the comparision. You can reverse it by setting **negate** to &#x60;true&#x60;.
    */
@@ -89,7 +89,7 @@ public class HttpMethodComparisonInfo extends ComparisonInfo {
     }
   }
 
-  public static final String JSON_PROPERTY_COMPARISON = "comparison";
+//  public static final String JSON_PROPERTY_COMPARISON = "comparison";
   private ComparisonEnum comparison;
 
   /**
@@ -143,12 +143,13 @@ public class HttpMethodComparisonInfo extends ComparisonInfo {
     }
   }
 
-  public static final String JSON_PROPERTY_VALUE = "value";
-  private ValueEnum value;
+//  public static final String JSON_PROPERTY_VALUE = "value";
+//  private ValueEnum value;
 
   /**
    * The values to compare to.
    */
+/*
   public enum ValuesEnum {
     CONNECT("CONNECT"),
     
@@ -196,9 +197,10 @@ public class HttpMethodComparisonInfo extends ComparisonInfo {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
   }
-
-  public static final String JSON_PROPERTY_VALUES = "values";
-  private Set<ValuesEnum> values = null;
+*/
+  
+//  public static final String JSON_PROPERTY_VALUES = "values";
+//  private Set<ValuesEnum> values = null;
 
   public HttpMethodComparisonInfo() { 
   }
@@ -217,8 +219,8 @@ public class HttpMethodComparisonInfo extends ComparisonInfo {
   @JsonProperty(JSON_PROPERTY_COMPARISON)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public ComparisonEnum getComparison() {
-    return comparison;
+  public String getComparison() {
+    return comparison.getValue();
   }
 
 
@@ -255,12 +257,12 @@ public class HttpMethodComparisonInfo extends ComparisonInfo {
   }
 
 
-  public HttpMethodComparisonInfo values(Set<ValuesEnum> values) {
+  public HttpMethodComparisonInfo values(Set<ValueEnum> values) {
     this.values = values;
     return this;
   }
 
-  public HttpMethodComparisonInfo addValuesItem(ValuesEnum valuesItem) {
+  public HttpMethodComparisonInfo addValuesItem(ValueEnum valuesItem) {
     if (this.values == null) {
       this.values = new LinkedHashSet<>();
     }
@@ -277,7 +279,7 @@ public class HttpMethodComparisonInfo extends ComparisonInfo {
   @JsonProperty(JSON_PROPERTY_VALUES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Set<ValuesEnum> getValues() {
+  public Set<ValueEnum> getValues() {
     return values;
   }
 
@@ -285,7 +287,7 @@ public class HttpMethodComparisonInfo extends ComparisonInfo {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(JSON_PROPERTY_VALUES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setValues(Set<ValuesEnum> values) {
+  public void setValues(Set<ValueEnum> values) {
     this.values = values;
   }
 

@@ -86,15 +86,15 @@ import com.dynatrace.apis.configv1.JSON;
   @JsonSubTypes.Type(value = ZosComparisonInfo.class, name = "ZosComparisonInfo"),
 })
 
-public class ComparisonInfo {
+public class ComparisonInfo<T> {
   public static final String JSON_PROPERTY_COMPARISON = "comparison";
   private String comparison;
 
   public static final String JSON_PROPERTY_VALUE = "value";
-  private Object value;
+  protected T value;
 
   public static final String JSON_PROPERTY_VALUES = "values";
-  private Set<Object> values = null;
+  protected Set<T> values = null;
 
   public static final String JSON_PROPERTY_NEGATE = "negate";
   private Boolean negate;
@@ -168,7 +168,7 @@ public class ComparisonInfo {
   public ComparisonInfo() { 
   }
 
-  public ComparisonInfo comparison(String comparison) {
+  public ComparisonInfo<T> comparison(String comparison) {
     this.comparison = comparison;
     return this;
   }
@@ -194,7 +194,7 @@ public class ComparisonInfo {
   }
 
 
-  public ComparisonInfo value(Object value) {
+  public ComparisonInfo<T> value(T value) {
     this.value = value;
     return this;
   }
@@ -215,17 +215,17 @@ public class ComparisonInfo {
 
   @JsonProperty(JSON_PROPERTY_VALUE)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setValue(Object value) {
+  public void setValue(T value) {
     this.value = value;
   }
 
 
-  public ComparisonInfo values(Set<Object> values) {
+  public ComparisonInfo<T> values(Set<T> values) {
     this.values = values;
     return this;
   }
 
-  public ComparisonInfo addValuesItem(Object valuesItem) {
+  public ComparisonInfo<T> addValuesItem(T valuesItem) {
     if (this.values == null) {
       this.values = new LinkedHashSet<>();
     }
@@ -242,7 +242,7 @@ public class ComparisonInfo {
   @JsonProperty(JSON_PROPERTY_VALUES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Set<Object> getValues() {
+  public Set<T> getValues() {
     return values;
   }
 
@@ -250,12 +250,12 @@ public class ComparisonInfo {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(JSON_PROPERTY_VALUES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setValues(Set<Object> values) {
+  public void setValues(Set<T> values) {
     this.values = values;
   }
 
 
-  public ComparisonInfo negate(Boolean negate) {
+  public ComparisonInfo<T> negate(Boolean negate) {
     this.negate = negate;
     return this;
   }
@@ -281,7 +281,7 @@ public class ComparisonInfo {
   }
 
 
-  public ComparisonInfo type(TypeEnum type) {
+  public ComparisonInfo<T> type(TypeEnum type) {
     this.type = type;
     return this;
   }
@@ -318,7 +318,7 @@ public class ComparisonInfo {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ComparisonInfo comparisonInfo = (ComparisonInfo) o;
+    ComparisonInfo<T> comparisonInfo = (ComparisonInfo<T>) o;
     return Objects.equals(this.comparison, comparisonInfo.comparison) &&
         Objects.equals(this.value, comparisonInfo.value) &&
         Objects.equals(this.values, comparisonInfo.values) &&

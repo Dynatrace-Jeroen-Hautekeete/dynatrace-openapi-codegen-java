@@ -108,8 +108,8 @@ public class IndexedNameComparison extends ComparisonBasic {
   @JsonProperty(JSON_PROPERTY_OPERATOR)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public OperatorEnum getOperator() {
-    return operator;
+  public String getOperator() {
+    return operator.getValue();
   }
 
 

@@ -51,7 +51,7 @@ import com.dynatrace.apis.configv1.JSON;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
-public class FailedStateComparisonInfo extends ComparisonInfo {
+public class FailedStateComparisonInfo extends ComparisonInfo<com.dynatrace.apis.configv1.model.FailedStateComparisonInfo.ValueEnum> {
   /**
    * Operator of the comparision. You can reverse it by setting **negate** to &#x60;true&#x60;.
    */
@@ -89,7 +89,7 @@ public class FailedStateComparisonInfo extends ComparisonInfo {
     }
   }
 
-  public static final String JSON_PROPERTY_COMPARISON = "comparison";
+//  public static final String JSON_PROPERTY_COMPARISON = "comparison";
   private ComparisonEnum comparison;
 
   /**
@@ -127,12 +127,13 @@ public class FailedStateComparisonInfo extends ComparisonInfo {
     }
   }
 
-  public static final String JSON_PROPERTY_VALUE = "value";
-  private ValueEnum value;
+//  public static final String JSON_PROPERTY_VALUE = "value";
+//  private ValueEnum value;
 
   /**
    * The values to compare to.
    */
+/*
   public enum ValuesEnum {
     FAILED("FAILED"),
     
@@ -164,9 +165,10 @@ public class FailedStateComparisonInfo extends ComparisonInfo {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
   }
-
-  public static final String JSON_PROPERTY_VALUES = "values";
-  private Set<ValuesEnum> values = null;
+*/
+  
+//  public static final String JSON_PROPERTY_VALUES = "values";
+//  private Set<ValuesEnum> values = null;
 
   public FailedStateComparisonInfo() { 
   }
@@ -185,8 +187,8 @@ public class FailedStateComparisonInfo extends ComparisonInfo {
   @JsonProperty(JSON_PROPERTY_COMPARISON)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public ComparisonEnum getComparison() {
-    return comparison;
+  public String getComparison() {
+    return comparison.getValue();
   }
 
 
@@ -223,12 +225,12 @@ public class FailedStateComparisonInfo extends ComparisonInfo {
   }
 
 
-  public FailedStateComparisonInfo values(Set<ValuesEnum> values) {
+  public FailedStateComparisonInfo values(Set<ValueEnum> values) {
     this.values = values;
     return this;
   }
 
-  public FailedStateComparisonInfo addValuesItem(ValuesEnum valuesItem) {
+  public FailedStateComparisonInfo addValuesItem(ValueEnum valuesItem) {
     if (this.values == null) {
       this.values = new LinkedHashSet<>();
     }
@@ -245,7 +247,7 @@ public class FailedStateComparisonInfo extends ComparisonInfo {
   @JsonProperty(JSON_PROPERTY_VALUES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Set<ValuesEnum> getValues() {
+  public Set<ValueEnum> getValues() {
     return values;
   }
 
@@ -253,7 +255,7 @@ public class FailedStateComparisonInfo extends ComparisonInfo {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(JSON_PROPERTY_VALUES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setValues(Set<ValuesEnum> values) {
+  public void setValues(Set<ValueEnum> values) {
     this.values = values;
   }
 

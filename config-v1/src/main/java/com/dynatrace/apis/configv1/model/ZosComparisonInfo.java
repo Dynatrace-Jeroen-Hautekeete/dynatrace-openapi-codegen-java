@@ -51,7 +51,7 @@ import com.dynatrace.apis.configv1.JSON;
 )
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "type", visible = true)
 
-public class ZosComparisonInfo extends ComparisonInfo {
+public class ZosComparisonInfo extends ComparisonInfo<com.dynatrace.apis.configv1.model.ZosComparisonInfo.ValueEnum> {
   /**
    * Operator of the comparision. You can reverse it by setting **negate** to &#x60;true&#x60;.
    */
@@ -89,7 +89,7 @@ public class ZosComparisonInfo extends ComparisonInfo {
     }
   }
 
-  public static final String JSON_PROPERTY_COMPARISON = "comparison";
+//  public static final String JSON_PROPERTY_COMPARISON = "comparison";
   private ComparisonEnum comparison;
 
   /**
@@ -159,12 +159,13 @@ public class ZosComparisonInfo extends ComparisonInfo {
     }
   }
 
-  public static final String JSON_PROPERTY_VALUE = "value";
-  private ValueEnum value;
+//  public static final String JSON_PROPERTY_VALUE = "value";
+//  private ValueEnum value;
 
   /**
    * The values to compare to.
    */
+/*
   public enum ValuesEnum {
     CTG("CTG"),
     
@@ -228,9 +229,10 @@ public class ZosComparisonInfo extends ComparisonInfo {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
   }
-
-  public static final String JSON_PROPERTY_VALUES = "values";
-  private Set<ValuesEnum> values = null;
+*/
+  
+//  public static final String JSON_PROPERTY_VALUES = "values";
+//  private Set<ValuesEnum> values = null;
 
   public ZosComparisonInfo() { 
   }
@@ -249,8 +251,8 @@ public class ZosComparisonInfo extends ComparisonInfo {
   @JsonProperty(JSON_PROPERTY_COMPARISON)
   @JsonInclude(value = JsonInclude.Include.ALWAYS)
 
-  public ComparisonEnum getComparison() {
-    return comparison;
+  public String getComparison() {
+    return comparison.getValue();
   }
 
 
@@ -287,12 +289,12 @@ public class ZosComparisonInfo extends ComparisonInfo {
   }
 
 
-  public ZosComparisonInfo values(Set<ValuesEnum> values) {
+  public ZosComparisonInfo values(Set<ValueEnum> values) {
     this.values = values;
     return this;
   }
 
-  public ZosComparisonInfo addValuesItem(ValuesEnum valuesItem) {
+  public ZosComparisonInfo addValuesItem(ValueEnum valuesItem) {
     if (this.values == null) {
       this.values = new LinkedHashSet<>();
     }
@@ -309,7 +311,7 @@ public class ZosComparisonInfo extends ComparisonInfo {
   @JsonProperty(JSON_PROPERTY_VALUES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
 
-  public Set<ValuesEnum> getValues() {
+  public Set<ValueEnum> getValues() {
     return values;
   }
 
@@ -317,7 +319,7 @@ public class ZosComparisonInfo extends ComparisonInfo {
   @JsonDeserialize(as = LinkedHashSet.class)
   @JsonProperty(JSON_PROPERTY_VALUES)
   @JsonInclude(value = JsonInclude.Include.USE_DEFAULTS)
-  public void setValues(Set<ValuesEnum> values) {
+  public void setValues(Set<ValueEnum> values) {
     this.values = values;
   }
 
