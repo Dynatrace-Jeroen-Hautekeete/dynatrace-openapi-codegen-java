@@ -1,0 +1,229 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.dynatrace</groupId>
+	<artifactId>apis</artifactId>
+	<version>1.254.47-sprint</version>
+	<packaging>pom</packaging>
+	<modules>
+		<!-- <module>mgmt</module> -->
+		<module>env-v1</module>
+		<module>env-v2</module>
+		<module>config-v1</module>
+	</modules>
+
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.openapitools</groupId>
+					<artifactId>openapi-generator-maven-plugin</artifactId>
+					<version>6.2.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.10.1</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.openapitools</groupId>
+					<artifactId>openapi-generator-maven-plugin</artifactId>
+					<executions>
+						<execution>
+							<id>config-v1</id>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>generate</goal>
+							</goals>
+	                        <configuration>
+    	                        <inputSpec>${project.basedir}/specs/spec3-config-v1-${project.version}.json</inputSpec>
+	                            <generatorName>java</generatorName>
+    	                        <configOptions>
+									<useGzipFeature>true</useGzipFeature>
+									<dateLibrary>java8</dateLibrary>
+                	            </configOptions>
+
+	                            <library>native</library>
+
+	                            <output>${project.basedir}/config-v1</output>
+								<modelPackage>com.dynatrace.apis.configv1.model</modelPackage>
+								<apiPackage>com.dynatrace.apis.configv1.api</apiPackage>
+								<invokerPackage>com.dynatrace.apis.configv1</invokerPackage>
+								<groupId>com.dynatrace</groupId>
+								<artifactId>config-v1</artifactId>
+								<artifactVersion>${project.version}</artifactVersion>
+	                        </configuration>						
+						</execution>
+						<execution>
+							<id>env-v1</id>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>generate</goal>
+							</goals>
+	                        <configuration>
+    	                        <inputSpec>${project.basedir}/specs/spec3-env-v1-${project.version}.json</inputSpec>
+	                            <generatorName>java</generatorName>
+    	                        <configOptions>
+									<useGzipFeature>true</useGzipFeature>
+									<dateLibrary>java8</dateLibrary>
+                	            </configOptions>
+
+	                            <library>native</library>
+
+	                            <output>${project.basedir}/env-v1</output>
+								<modelPackage>com.dynatrace.apis.envv1.model</modelPackage>
+								<apiPackage>com.dynatrace.apis.envv1.api</apiPackage>
+								<invokerPackage>com.dynatrace.apis.envv1</invokerPackage>
+								<groupId>com.dynatrace</groupId>
+								<artifactId>env-v1</artifactId>
+								<artifactVersion>${project.version}</artifactVersion>
+	                        </configuration>						
+						</execution>
+						<execution>
+							<id>env-v2</id>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>generate</goal>
+							</goals>
+	                        <configuration>
+    	                        <inputSpec>${project.basedir}/specs/spec3-env-v2-${project.version}.json</inputSpec>
+	                            <generatorName>java</generatorName>
+    	                        <configOptions>
+									<useGzipFeature>true</useGzipFeature>
+									<dateLibrary>java8</dateLibrary>
+                	            </configOptions>
+
+	                            <library>native</library>
+
+	                            <output>${project.basedir}/env-v2</output>
+								<modelPackage>com.dynatrace.apis.envv2.model</modelPackage>
+								<apiPackage>com.dynatrace.apis.envv2.api</apiPackage>
+								<invokerPackage>com.dynatrace.apis.envv2</invokerPackage>
+								<groupId>com.dynatrace</groupId>
+								<artifactId>env-v2</artifactId>
+								<artifactVersion>${project.version}</artifactVersion>
+	                        </configuration>						
+						</execution>
+						
+					</executions>
+				</plugin>
+			</plugins>
+	</build>
+
+	<dependencies>
+		<!-- dependencies are needed for the client being generated -->
+
+		<dependency>
+			<groupId>io.swagger.core.v3</groupId>
+			<artifactId>swagger-annotations</artifactId>
+			<version>${swagger-annotations-version}</version>
+		</dependency>
+
+		<!-- You can find the dependencies for the library configuration you chose 
+			by looking in JavaClientCodegen. Then find the corresponding dependency on 
+			Maven Central, and set the versions in the property section below -->
+
+		<!-- HTTP client: jersey-client -->
+<!--		
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>${jersey-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jackson</artifactId>
+			<version>${jersey-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-multipart</artifactId>
+			<version>${jersey-version}</version>
+		</dependency>
+-->
+		<!-- JSON processing: jackson -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-base</artifactId>
+			<version>${jackson-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>${jackson-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>${jackson-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.jaxrs</groupId>
+			<artifactId>jackson-jaxrs-json-provider</artifactId>
+			<version>${jackson-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.datatype</groupId>
+			<artifactId>jackson-datatype-jsr310</artifactId>
+			<version>${jackson-version}</version>
+		</dependency>
+
+		<!-- Joda time: if you use it -->
+		<!-- <dependency> <groupId>com.fasterxml.jackson.datatype</groupId> <artifactId>jackson-datatype-joda</artifactId> 
+			<version>${jackson-version}</version> </dependency> <dependency> <groupId>joda-time</groupId> 
+			<artifactId>joda-time</artifactId> <version>${jodatime-version}</version> 
+			</dependency> -->
+
+		<!-- Base64 encoding that works in both JVM and Android -->
+		<!-- <dependency> <groupId>com.brsanthu</groupId> <artifactId>migbase64</artifactId> 
+			<version>2.2</version> </dependency> -->
+
+		<!-- okhttp -->
+		<!-- <dependency> <groupId>com.squareup.okhttp</groupId> <artifactId>okhttp</artifactId> 
+			<version>2.7.5</version> </dependency> <dependency> <groupId>com.squareup.okhttp</groupId> 
+			<artifactId>logging-interceptor</artifactId> <version>2.7.5</version> </dependency> -->
+		<dependency>
+			<groupId>org.threeten</groupId>
+			<artifactId>threetenbp</artifactId>
+			<version>1.4.0</version>
+		</dependency>
+		<!-- <dependency> <groupId>com.google.code.gson</groupId> <artifactId>gson</artifactId> 
+			<version>2.8.5</version> </dependency> <dependency> <groupId>io.gsonfire</groupId> 
+			<artifactId>gson-fire</artifactId> <version>1.8.3</version> </dependency> -->
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit-version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+<!--		
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+-->		
+		<maven.compiler.release>11</maven.compiler.release>
+		<swagger-annotations-version>2.1.13</swagger-annotations-version>
+<!--		
+		<jersey-version>2.25.1</jersey-version>
+-->		
+		<jackson-version>2.13.2</jackson-version>
+		<!-- jodatime-version>2.7</jodatime-version -->
+		<maven-plugin-version>1.0.0</maven-plugin-version>
+		<junit-version>5.8.2</junit-version>
+		<jmustache-version>1.15</jmustache-version>
+	</properties>
+
+</project>
