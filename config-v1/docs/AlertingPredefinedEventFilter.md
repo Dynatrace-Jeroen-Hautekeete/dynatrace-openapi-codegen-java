@@ -1,0 +1,93 @@
+
+
+# AlertingPredefinedEventFilter
+
+Configuration of a predefined event filter.
+
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**eventType** | [**EventTypeEnum**](#EventTypeEnum) | The type of the predefined event. |  |
+|**negate** | **Boolean** | The alert triggers when the problem of specified severity arises while the specified event **is** happening (&#x60;false&#x60;) or while the specified event is **not** happening (&#x60;true&#x60;).    For example, if you chose the Slowdown (&#x60;PERFORMANCE&#x60;) severity and Unexpected high traffic (&#x60;APPLICATION_UNEXPECTED_HIGH_LOAD&#x60;) event with **negate** set to &#x60;true&#x60;, the alerting profile will trigger only when the slowdown problem is raised while there is no unexpected high traffic event.   Consider the following use case as an example. The Slowdown (&#x60;PERFORMANCE&#x60;) severity rule is set. Depending on the configuration of the event filter (Unexpected high traffic (&#x60;APPLICATION_UNEXPECTED_HIGH_LOAD&#x60;) event is used as an example), the behavior of the alerting profile is one of the following:* **negate** is set to &#x60;false&#x60;: The alert triggers when the slowdown problem is raised while unexpected high traffic event is happening.  * **negate** is set to &#x60;true&#x60;: The alert triggers when the slowdown problem is raised while there is no unexpected high traffic event.   * no event rule is set: The alert triggers when the slowdown problem is raised, regardless of any events. |  |
+
+
+
+## Enum: EventTypeEnum
+
+| Name | Value |
+|---- | -----|
+| APPLICATION_ERROR_RATE_INCREASED | &quot;APPLICATION_ERROR_RATE_INCREASED&quot; |
+| APPLICATION_SLOWDOWN | &quot;APPLICATION_SLOWDOWN&quot; |
+| APPLICATION_UNEXPECTED_HIGH_LOAD | &quot;APPLICATION_UNEXPECTED_HIGH_LOAD&quot; |
+| APPLICATION_UNEXPECTED_LOW_LOAD | &quot;APPLICATION_UNEXPECTED_LOW_LOAD&quot; |
+| AWS_LAMBDA_HIGH_ERROR_RATE | &quot;AWS_LAMBDA_HIGH_ERROR_RATE&quot; |
+| CUSTOM_APPLICATION_ERROR_RATE_INCREASED | &quot;CUSTOM_APPLICATION_ERROR_RATE_INCREASED&quot; |
+| CUSTOM_APPLICATION_SLOWDOWN | &quot;CUSTOM_APPLICATION_SLOWDOWN&quot; |
+| CUSTOM_APPLICATION_UNEXPECTED_HIGH_LOAD | &quot;CUSTOM_APPLICATION_UNEXPECTED_HIGH_LOAD&quot; |
+| CUSTOM_APPLICATION_UNEXPECTED_LOW_LOAD | &quot;CUSTOM_APPLICATION_UNEXPECTED_LOW_LOAD&quot; |
+| CUSTOM_APP_CRASH_RATE_INCREASED | &quot;CUSTOM_APP_CRASH_RATE_INCREASED&quot; |
+| DATABASE_CONNECTION_FAILURE | &quot;DATABASE_CONNECTION_FAILURE&quot; |
+| EBS_VOLUME_HIGH_LATENCY | &quot;EBS_VOLUME_HIGH_LATENCY&quot; |
+| EC2_HIGH_CPU | &quot;EC2_HIGH_CPU&quot; |
+| ELB_HIGH_BACKEND_ERROR_RATE | &quot;ELB_HIGH_BACKEND_ERROR_RATE&quot; |
+| ESXI_GUEST_ACTIVE_SWAP_WAIT | &quot;ESXI_GUEST_ACTIVE_SWAP_WAIT&quot; |
+| ESXI_GUEST_CPU_LIMIT_REACHED | &quot;ESXI_GUEST_CPU_LIMIT_REACHED&quot; |
+| ESXI_HOST_CPU_SATURATION | &quot;ESXI_HOST_CPU_SATURATION&quot; |
+| ESXI_HOST_DATASTORE_LOW_DISK_SPACE | &quot;ESXI_HOST_DATASTORE_LOW_DISK_SPACE&quot; |
+| ESXI_HOST_DISK_QUEUE_SLOW | &quot;ESXI_HOST_DISK_QUEUE_SLOW&quot; |
+| ESXI_HOST_DISK_SLOW | &quot;ESXI_HOST_DISK_SLOW&quot; |
+| ESXI_HOST_MEMORY_SATURATION | &quot;ESXI_HOST_MEMORY_SATURATION&quot; |
+| ESXI_HOST_NETWORK_PROBLEMS | &quot;ESXI_HOST_NETWORK_PROBLEMS&quot; |
+| ESXI_HOST_OVERLOADED_STORAGE | &quot;ESXI_HOST_OVERLOADED_STORAGE&quot; |
+| ESXI_VM_IMPACT_HOST_CPU_SATURATION | &quot;ESXI_VM_IMPACT_HOST_CPU_SATURATION&quot; |
+| ESXI_VM_IMPACT_HOST_MEMORY_SATURATION | &quot;ESXI_VM_IMPACT_HOST_MEMORY_SATURATION&quot; |
+| EXTERNAL_SYNTHETIC_TEST_OUTAGE | &quot;EXTERNAL_SYNTHETIC_TEST_OUTAGE&quot; |
+| EXTERNAL_SYNTHETIC_TEST_SLOWDOWN | &quot;EXTERNAL_SYNTHETIC_TEST_SLOWDOWN&quot; |
+| HOST_OF_SERVICE_UNAVAILABLE | &quot;HOST_OF_SERVICE_UNAVAILABLE&quot; |
+| HTTP_CHECK_GLOBAL_OUTAGE | &quot;HTTP_CHECK_GLOBAL_OUTAGE&quot; |
+| HTTP_CHECK_LOCAL_OUTAGE | &quot;HTTP_CHECK_LOCAL_OUTAGE&quot; |
+| HTTP_CHECK_TEST_LOCATION_SLOWDOWN | &quot;HTTP_CHECK_TEST_LOCATION_SLOWDOWN&quot; |
+| MOBILE_APPLICATION_ERROR_RATE_INCREASED | &quot;MOBILE_APPLICATION_ERROR_RATE_INCREASED&quot; |
+| MOBILE_APPLICATION_SLOWDOWN | &quot;MOBILE_APPLICATION_SLOWDOWN&quot; |
+| MOBILE_APPLICATION_UNEXPECTED_HIGH_LOAD | &quot;MOBILE_APPLICATION_UNEXPECTED_HIGH_LOAD&quot; |
+| MOBILE_APPLICATION_UNEXPECTED_LOW_LOAD | &quot;MOBILE_APPLICATION_UNEXPECTED_LOW_LOAD&quot; |
+| MOBILE_APP_CRASH_RATE_INCREASED | &quot;MOBILE_APP_CRASH_RATE_INCREASED&quot; |
+| MONITORING_UNAVAILABLE | &quot;MONITORING_UNAVAILABLE&quot; |
+| OSI_DISK_LOW_INODES | &quot;OSI_DISK_LOW_INODES&quot; |
+| OSI_GRACEFULLY_SHUTDOWN | &quot;OSI_GRACEFULLY_SHUTDOWN&quot; |
+| OSI_HIGH_CPU | &quot;OSI_HIGH_CPU&quot; |
+| OSI_HIGH_MEMORY | &quot;OSI_HIGH_MEMORY&quot; |
+| OSI_LOW_DISK_SPACE | &quot;OSI_LOW_DISK_SPACE&quot; |
+| OSI_NIC_DROPPED_PACKETS_HIGH | &quot;OSI_NIC_DROPPED_PACKETS_HIGH&quot; |
+| OSI_NIC_ERRORS_HIGH | &quot;OSI_NIC_ERRORS_HIGH&quot; |
+| OSI_NIC_UTILIZATION_HIGH | &quot;OSI_NIC_UTILIZATION_HIGH&quot; |
+| OSI_SLOW_DISK | &quot;OSI_SLOW_DISK&quot; |
+| OSI_UNEXPECTEDLY_UNAVAILABLE | &quot;OSI_UNEXPECTEDLY_UNAVAILABLE&quot; |
+| PGI_OF_SERVICE_UNAVAILABLE | &quot;PGI_OF_SERVICE_UNAVAILABLE&quot; |
+| PGI_UNAVAILABLE | &quot;PGI_UNAVAILABLE&quot; |
+| PG_LOW_INSTANCE_COUNT | &quot;PG_LOW_INSTANCE_COUNT&quot; |
+| PROCESS_CRASHED | &quot;PROCESS_CRASHED&quot; |
+| PROCESS_HIGH_GC_ACTIVITY | &quot;PROCESS_HIGH_GC_ACTIVITY&quot; |
+| PROCESS_MEMORY_RESOURCE_EXHAUSTED | &quot;PROCESS_MEMORY_RESOURCE_EXHAUSTED&quot; |
+| PROCESS_NA_HIGH_CONN_FAIL_RATE | &quot;PROCESS_NA_HIGH_CONN_FAIL_RATE&quot; |
+| PROCESS_NA_HIGH_LOSS_RATE | &quot;PROCESS_NA_HIGH_LOSS_RATE&quot; |
+| PROCESS_THREADS_RESOURCE_EXHAUSTED | &quot;PROCESS_THREADS_RESOURCE_EXHAUSTED&quot; |
+| RDS_HIGH_CPU | &quot;RDS_HIGH_CPU&quot; |
+| RDS_HIGH_LATENCY | &quot;RDS_HIGH_LATENCY&quot; |
+| RDS_LOW_MEMORY | &quot;RDS_LOW_MEMORY&quot; |
+| RDS_LOW_STORAGE_SPACE | &quot;RDS_LOW_STORAGE_SPACE&quot; |
+| RDS_OF_SERVICE_UNAVAILABLE | &quot;RDS_OF_SERVICE_UNAVAILABLE&quot; |
+| RDS_RESTART_SEQUENCE | &quot;RDS_RESTART_SEQUENCE&quot; |
+| SERVICE_ERROR_RATE_INCREASED | &quot;SERVICE_ERROR_RATE_INCREASED&quot; |
+| SERVICE_SLOWDOWN | &quot;SERVICE_SLOWDOWN&quot; |
+| SERVICE_UNEXPECTED_HIGH_LOAD | &quot;SERVICE_UNEXPECTED_HIGH_LOAD&quot; |
+| SERVICE_UNEXPECTED_LOW_LOAD | &quot;SERVICE_UNEXPECTED_LOW_LOAD&quot; |
+| SYNTHETIC_GLOBAL_OUTAGE | &quot;SYNTHETIC_GLOBAL_OUTAGE&quot; |
+| SYNTHETIC_LOCAL_OUTAGE | &quot;SYNTHETIC_LOCAL_OUTAGE&quot; |
+| SYNTHETIC_NODE_OUTAGE | &quot;SYNTHETIC_NODE_OUTAGE&quot; |
+| SYNTHETIC_PRIVATE_LOCATION_OUTAGE | &quot;SYNTHETIC_PRIVATE_LOCATION_OUTAGE&quot; |
+| SYNTHETIC_TEST_LOCATION_SLOWDOWN | &quot;SYNTHETIC_TEST_LOCATION_SLOWDOWN&quot; |
+
+
+
